@@ -1,12 +1,13 @@
 package converter.exceptions;
 
+import converter.ElbonianArabicConverter;
+
 /**
  * Exception that is thrown when a string that should represent a number (Arabic or Elbonian) is malformed.
  *
  * @version 3/18/17
  */
 public class MalformedNumberException extends Exception {
-
     /**
      * Constructor with a description message for the malformed number Exception.
      *
@@ -15,5 +16,4 @@ public class MalformedNumberException extends Exception {
     public MalformedNumberException(String message) {
         super(message);
     }
-
 }
