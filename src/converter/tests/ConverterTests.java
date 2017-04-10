@@ -40,8 +40,8 @@ public class ConverterTests {
 
     @Test
     public void ArabicToElbonianSampleTest() throws MalformedNumberException, ValueOutOfBoundsException {
-        ElbonianArabicConverter converter = new ElbonianArabicConverter("I");
-        assertEquals(converter.toArabic(), 1);
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("vV");
+        assertEquals(converter.toArabic(), 4);
     }
 
     @Test(expected = MalformedNumberException.class)

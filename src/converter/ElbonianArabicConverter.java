@@ -77,19 +77,19 @@ public class ElbonianArabicConverter {
                 if (c == 'I' && b != 'I'){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
-                else if (c == 'V' && b != 'I' && b != 'v' || (i == (x+2) && b != 'V')){
+                else if (c == 'V' && b != 'I' && b != 'v' && (i == (x+2) && b != 'V')){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
                 else if (c == 'X' && b != 'I' && b != 'v' && b != 'V' && b != 'X'){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
-                else if (c == 'L' && b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' || (i == (x+2) && b != 'L')){
+                else if (c == 'L' && b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' && (i == (x+2) && b != 'L')){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
                 else if (c == 'C' && b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' && b != 'L' && b != 'C'){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
-                else if (c == 'D' && b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' && b != 'L' && b != 'C' && b != 'd' || (i == (x+2) && b != 'D')){
+                else if (c == 'D' && b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' && b != 'L' && b != 'C' && b != 'd' && (i == (x+2) && b != 'D')){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
             }
@@ -99,20 +99,20 @@ public class ElbonianArabicConverter {
         //if a elbonian number contains 4 of any M,C,X,I
         //if an elbonian number contains more that 2 of any D,L,V
         //if an elbonian number contains more than one of any d,l,v
+        int M = 0;
+        int C = 0;
+        int X = 0;
+        int I = 0;
+
+        int D = 0;
+        int L = 0;
+        int V = 0;
+
+        int d = 0;
+        int l = 0;
+        int v = 0;
         for (int x = number.length() -1; x >= 0; x--) {
             char c = number.charAt(x);
-            int M = 0;
-            int C = 0;
-            int X = 0;
-            int I = 0;
-
-            int D = 0;
-            int L = 0;
-            int V = 0;
-
-            int d = 0;
-            int l = 0;
-            int v = 0;
 
             if (c == 'M'){
                 M += 1;
@@ -147,7 +147,7 @@ public class ElbonianArabicConverter {
                 v += 1;
             }
 
-            if (M >= 4 || C >= 4 || X >= 4 || I >= 4 || D >= 4 || L >= 4 || V >= 4 || d >= 4 || l >= 4 || v >= 4){
+            if (M >= 4 || C >= 4 || X >= 4 || I >= 4 || D >= 3 || L >= 3 || V >= 3 || d >= 2 || l >= 2 || v >= 2){
                 throw new MalformedNumberException("Too many of one elbonian number");
             }
         }
@@ -176,11 +176,11 @@ public class ElbonianArabicConverter {
         else if (number.contains("VI")){
             arabic = arabic + 6;
         }
-        else if (number.contains("V")){
-            arabic = arabic + 5;
-        }
         else if (number.contains("vV")){
             arabic = arabic + 4;
+        }
+        else if (number.contains("V")){
+            arabic = arabic + 5;
         }
         else if (number.contains("III")){
             arabic = arabic + 3;
@@ -204,11 +204,11 @@ public class ElbonianArabicConverter {
         else if (number.contains("LX")){
             arabic = arabic + 60;
         }
-        else if (number.contains("L")){
-            arabic = arabic + 50;
-        }
         else if (number.contains("lL")){
             arabic = arabic + 40;
+        }
+        else if (number.contains("L")){
+            arabic = arabic + 50;
         }
         else if (number.contains("XXX")){
             arabic = arabic + 30;
@@ -232,11 +232,11 @@ public class ElbonianArabicConverter {
         else if (number.contains("DC")){
             arabic = arabic + 600;
         }
-        else if (number.contains("D")){
-            arabic = arabic + 500;
-        }
         else if (number.contains("dD")){
             arabic = arabic + 400;
+        }
+        else if (number.contains("D")){
+            arabic = arabic + 500;
         }
         else if (number.contains("CCC")){
             arabic = arabic + 300;
