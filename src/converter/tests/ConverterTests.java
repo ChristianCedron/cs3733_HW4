@@ -35,6 +35,21 @@ public class ConverterTests {
         ElbonianArabicConverter converter = new ElbonianArabicConverter("999");
         assertEquals("DdDLlLVvV", converter.toElbonian());
     }
+    @Test
+    public void ArabicToElbonianTestSample5() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("");
+        assertEquals("", converter.toElbonian());
+    }
+    @Test
+    public void ArabicToElbonianTestSample6() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("                 ");
+        assertEquals("", converter.toElbonian());
+    }
+    @Test
+    public void ArabicToElbonianTestSample7() throws MalformedNumberException, ValueOutOfBoundsException{
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("vV");
+        assertEquals("vV", converter.toElbonian());
+    }
 
 
 
@@ -43,6 +58,29 @@ public class ConverterTests {
         ElbonianArabicConverter converter = new ElbonianArabicConverter("vV");
         assertEquals(converter.toArabic(), 4);
     }
+    @Test
+    public void ElbonianToArabicSampleTest2() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("MMMdDX");
+        assertEquals(converter.toArabic(), 3410);
+    }
+    @Test
+    public void ElbonianToArabicSampleTest3() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("XV");
+        assertEquals(converter.toArabic(), 15);
+    }
+    @Test
+    public void ElbonianToArabicSampleTest4() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("VII");
+        assertEquals(converter.toArabic(), 7);
+    }
+    @Test
+    public void ElbonianToArabicSampleTest5() throws MalformedNumberException, ValueOutOfBoundsException {
+        ElbonianArabicConverter converter = new ElbonianArabicConverter("12");
+        assertEquals(converter.toArabic(), 12);
+    }
+
+
+
 
     @Test(expected = MalformedNumberException.class)
     public void malformedNumberTest() throws MalformedNumberException, ValueOutOfBoundsException {

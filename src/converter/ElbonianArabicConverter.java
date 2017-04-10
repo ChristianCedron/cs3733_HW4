@@ -158,7 +158,7 @@ public class ElbonianArabicConverter {
                 throw new ValueOutOfBoundsException("The Value given was greater than 3999, Not writable in Elbonian ");
             }
         }
-        catch(NumberFormatException e){e.printStackTrace();}
+        catch(NumberFormatException e){}
         this.number = removeSpaces(number);
     }
 
@@ -273,7 +273,13 @@ public class ElbonianArabicConverter {
      * @return An Elbonian value
      */
     public String toElbonian() {
-        return toElbonian(number, "");
+        try {
+            new Integer(number);
+            return toElbonian(number, "");
+        }
+        catch(NumberFormatException e){
+            return number;
+        }
     }
 
     private String removeSpaces(String input){
