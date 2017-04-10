@@ -152,7 +152,14 @@ public class ElbonianArabicConverter {
             }
         }
 
-        this.number = number;
+        //checks to see if the input is smaller than 4000
+        try {
+            if (new Integer(number) > 3999 || new Integer(number) < 1) {
+                throw new ValueOutOfBoundsException("The Value given was greater than 3999, Not writable in Elbonian ");
+            }
+        }
+        catch(NumberFormatException e){e.printStackTrace();}
+        this.number = removeSpaces(number);
     }
 
     /**
@@ -162,7 +169,6 @@ public class ElbonianArabicConverter {
      * @return An arabic value
      */
     public int toArabic() {
-        // TODO Fill in the method's body
         int arabic = 0;
         if (number.contains("VvV")){
             arabic = arabic + 9;
@@ -267,8 +273,7 @@ public class ElbonianArabicConverter {
      * @return An Elbonian value
      */
     public String toElbonian() {
-        // TODO Fill in the method's body
-        return "I";
+        return toElbonian(number, "");
     }
 
     private String removeSpaces(String input){
@@ -282,6 +287,120 @@ public class ElbonianArabicConverter {
         }
        System.out.println(new String(outputArray));
         return new String(outputArray);
+    }
+
+    private String toElbonian(String currentArray, String returnValue){
+        switch(currentArray.length()) {
+            case 0:
+                return returnValue;
+            case 1:
+                switch(currentArray.toCharArray()[0]) {
+                    case '1':
+                        returnValue = returnValue + "I";
+                        break;
+                    case '2':
+                        returnValue = returnValue + "II";
+                        break;
+                    case '3':
+                        returnValue = returnValue + "III";
+                        break;
+                    case '4':
+                        returnValue = returnValue + "vV";
+                        break;
+                    case '5':
+                        returnValue = returnValue + "V";
+                        break;
+                    case '6':
+                        returnValue = returnValue + "VI";
+                        break;
+                    case '7':
+                        returnValue = returnValue + "VII";
+                        break;
+                    case '8':
+                        returnValue = returnValue + "VIII";
+                        break;
+                    case '9':
+                        returnValue = returnValue + "VvV";
+                        break;
+                }
+                break;
+            case 2:
+                switch(currentArray.toCharArray()[0]) {
+                    case '1':
+                        returnValue = returnValue + "X";
+                        break;
+                    case '2':
+                        returnValue = returnValue + "XX";
+                        break;
+                    case '3':
+                        returnValue = returnValue + "XXX";
+                        break;
+                    case '4':
+                        returnValue = returnValue + "lL";
+                        break;
+                    case '5':
+                        returnValue = returnValue + "L";
+                        break;
+                    case '6':
+                        returnValue = returnValue + "LX";
+                        break;
+                    case '7':
+                        returnValue = returnValue + "LXX";
+                        break;
+                    case '8':
+                        returnValue = returnValue + "LXXX";
+                        break;
+                    case '9':
+                        returnValue = returnValue + "LlL";
+                        break;
+                }
+                break;
+            case 3:
+                switch(currentArray.toCharArray()[0]) {
+                    case '1':
+                        returnValue = returnValue + "C";
+                        break;
+                    case '2':
+                        returnValue = returnValue + "CC";
+                        break;
+                    case '3':
+                        returnValue = returnValue + "CCC";
+                        break;
+                    case '4':
+                        returnValue = returnValue + "dD";
+                        break;
+                    case '5':
+                        returnValue = returnValue + "D";
+                        break;
+                    case '6':
+                        returnValue = returnValue + "DC";
+                        break;
+                    case '7':
+                        returnValue = returnValue + "DCC";
+                        break;
+                    case '8':
+                        returnValue = returnValue + "DCCC";
+                        break;
+                    case '9':
+                        returnValue = returnValue + "DdD";
+                        break;
+                }
+                break;
+            case 4:
+                switch(currentArray.toCharArray()[0]) {
+                    case '1' :
+                        returnValue = returnValue + "M";
+                        break;
+                    case '2' :
+                        returnValue = returnValue + "MM";
+                        break;
+                    case '3' :
+                        returnValue = returnValue + "MMM";
+                        break;
+                }
+                break;
+        }
+        return toElbonian(currentArray.substring(1), returnValue);
     }
 
 }
