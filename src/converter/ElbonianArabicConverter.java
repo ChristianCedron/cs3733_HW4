@@ -170,6 +170,12 @@ public class ElbonianArabicConverter {
      */
     public int toArabic() {
         int arabic = 0;
+
+        String numRegex = ".*[0-9].*";
+        if (number.matches(numRegex)){
+            return Integer.valueOf(number);
+        }
+
         if (number.contains("VvV")){
             arabic = arabic + 9;
         }
