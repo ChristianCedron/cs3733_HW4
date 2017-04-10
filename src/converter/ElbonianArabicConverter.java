@@ -77,19 +77,19 @@ public class ElbonianArabicConverter {
                 if (c == 'I' && b != 'I'){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
-                else if (c == 'V' && ((b != 'I' && b != 'v') || (i == (x+2) && b != 'V'))){
+                else if (c == 'V' && ((b != 'I' && b != 'v') || (i == (x+2) && b != 'V' && (b != 'I' && b != 'v')))){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
                 else if (c == 'X' && b != 'I' && b != 'v' && b != 'V' && b != 'X'){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
-                else if (c == 'L' && ((b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l') || (i == (x+2) && b != 'L'))){
+                else if (c == 'L' && ((b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l') || (i == (x+2) && b != 'L' && (b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l')))){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
                 else if (c == 'C' && b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' && b != 'L' && b != 'C'){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
-                else if (c == 'D' && ((b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' && b != 'L' && b != 'C' && b != 'd') || (i == (x+2) && b != 'D'))){
+                else if (c == 'D' && ((b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' && b != 'L' && b != 'C' && b != 'd') || (i == (x+2) && b != 'D' && (b != 'I' && b != 'v' && b != 'V' && b != 'X' && b != 'l' && b != 'L' && b != 'C' && b != 'd')))){
                     throw new MalformedNumberException("Elbonian numerals not in proper order");
                 }
             }
